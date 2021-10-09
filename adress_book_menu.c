@@ -9,6 +9,7 @@
 #include "abk_menus.h"
 #include "abk.h"
 
+
 int get_option(int type, const char *msg)
 {
 	/*
@@ -107,6 +108,7 @@ Status menu(AddressBook *address_book)
 		{
 			case e_add_contact:
 				/* Add your implementation to call add_contacts function here */
+				add_contacts(address_book);
 				break;
 			case e_search_contact:
 				search_contact(address_book);
@@ -134,6 +136,13 @@ Status menu(AddressBook *address_book)
 Status add_contacts(AddressBook *address_book)
 {
 	/* Add the functionality for adding contacts here */
+	//address_book -> count;
+	printf("Please enter your name.");
+	scanf("%s", address_book -> list[NAME_COUNT][NAME_LEN].name);
+	printf("Please enter your phone number.");
+	scanf("%s",address_book -> list[PHONE_NUMBER_COUNT][NUMBER_LEN].phone_numbers);
+	printf("Please enter your email address.");
+	scanf("%s", address_book -> list[EMAIL_ID_COUNT][EMAIL_ID_LEN].email_addresses);
 }
 
 Status search(const char *str, AddressBook *address_book, int loop_count, int field, const char *msg, Modes mode)
