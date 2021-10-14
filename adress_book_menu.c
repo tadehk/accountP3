@@ -53,7 +53,17 @@ Status list_contacts(AddressBook *address_book, const char *title, int *index, c
 	 * Should be menu based
 	 * The menu provide navigation option if the entries increase the page size
 	 */ 
-
+	/*if(address_book == NULL)
+	{
+		printf("There are no names in the address book.");
+		return;
+	}*/
+	for(; i < *address_book -1; i++)
+	{
+		printf("\nPhone Book Entries (%d):", *address_book);
+		printf("\n%s\t%s\t%s", list[i].name, list[i].phone_numbers, list[i].email_addresses);
+	}
+	
 	return e_success;
 }
 
@@ -121,6 +131,7 @@ Status menu(AddressBook *address_book)
 				break;
 			case e_list_contacts:
 				break;
+				list_contacts(address_book);
 				/* Add your implementation to call list_contacts function here */
 			case e_save:
 				save_file(address_book);
@@ -147,38 +158,12 @@ Status add_contacts(AddressBook *address_book)
 
 Status search(const char *str, AddressBook *address_book, int loop_count, int field, const char *msg, Modes mode)
 {
-	
+	/* Add the functionality for adding contacts here */
 }
 
 Status search_contact(AddressBook *address_book)
 {
-	if (address_book == NULL)                   
-    {
-        printf("address_book is null\n");
-        return;
-    }
-    char name[200] = { 0 };
-    printf("Please enter the name of the contact you want to find:");           
-    scanf("%s", &name);
-    size_t i = 0;
-    for (; i < address_book->count; ++i)
-    {
-        if (strcmp(address_book->list[i].name, name) == 0)
-        {
-            printf("eureka!\n");
-            printf("This person's information is:\n full name:%s ,Telephone:%s ,Address:%s\n",
-                address_book->list[i].name,
-                address_book->list[i].phone_numbers,
-                address_book->list[i].email_addresses);
-            return;
-        }
-    }
-    if (i == address_book->count)
-    {
-        printf("No one!\n");
-        return;
-    }
-
+	/* Add the functionality for search contacts here */
 }
 
 Status edit_contact(AddressBook *address_book)
