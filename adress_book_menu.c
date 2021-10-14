@@ -165,8 +165,26 @@ Status search_contact(AddressBook *address_book)
     {
         if (strcmp(address_book->list[i].name, name) == 0)
         {
-            printf("eureka!\n");
             printf("This person's information is:\n full name:%s ,Telephone:%s ,Address:%s\n",
+                address_book->list[i].name,
+                address_book->list[i].phone_numbers,
+                address_book->list[i].email_addresses);
+            return;
+        }
+
+		if (strcmp(address_book->list[i].phone_numbers, name) == 0)
+        {
+
+            printf("This person's information is:\n full name:%s\n ,Telephone:%s\n ,Address:%s\n",
+                address_book->list[i].name,
+                address_book->list[i].phone_numbers,
+                address_book->list[i].email_addresses);
+            return;
+        }
+		
+		if (strcmp(address_book->list[i].email_addresses, name) == 0)
+        {
+            printf("This person's information is:\n full name:%s\n ,Telephone:%s\n ,Address:%s\n",
                 address_book->list[i].name,
                 address_book->list[i].phone_numbers,
                 address_book->list[i].email_addresses);
@@ -175,7 +193,8 @@ Status search_contact(AddressBook *address_book)
     }
     if (i == address_book->count)
     {
-        printf("No one!\n");
+        printf("This person is not in this address book.\n");
+		printf("Please search for a different person.\n");
         return;
     }
 
@@ -184,6 +203,82 @@ Status search_contact(AddressBook *address_book)
 Status edit_contact(AddressBook *address_book)
 {
 	/* Add the functionality for edit contacts here */
+	printf("Search Contact to Edit by:/n
+		0.Back/n
+		1.Name/n
+		2.Phone No/n
+		3.Email ID/n
+		Please select an option: ");
+	int num;
+	scanf("%d", num);
+	switch(num)
+	{
+		case 1:
+			char name[200] = { 0 };
+			printf("Enter the Name: ");
+			scanf("%s", &name);
+    			size_t i = 0;
+    			for (; i < address_book->count; ++i)
+    			{
+        			if (strcmp(address_book->list[i].name, name) == 0)
+        			{
+            			printf("What would you like to change the name to?: ");
+				scanf("%s", address_book -> list[i][NAME_LEN].name);
+        			}
+    			}
+    			if (i == address_book->count)
+    			{
+        			printf("Name not found\n");
+       
+			}
+			break;
+		case 2:
+			char phone[200] = { 0 };
+			printf("Enter the Phone Number: ");
+			scanf("%s", &phone);
+    			size_t i = 0;
+    			for (; i < address_book->count; ++i)
+    			{
+        			if (strcmp(address_book->list[i].phone_numbers, phone) == 0)
+        			{
+            			printf("What would you like to change the phone number to?: ");
+				scanf("%s", address_book -> list[i][NUMBER_LEN].phone_numbers);
+        			}
+    			}
+    			if (i == address_book->count)
+    			{
+        			printf("Phone number not found\n");
+       
+			}
+			break;
+		case 3:
+			char email[200] = { 0 };
+			printf("Enter the Email ID: ");
+			scanf("%s", &email);
+    			size_t i = 0;
+    			for (; i < address_book->count; ++i)
+    			{
+        			if (strcmp(address_book->list[i].email_addresses, email_addresses) == 0)
+        			{
+            			printf("What would you like to change the email address to?: ");
+				scanf("%s", address_book -> list[i][EMAIL_ID_LEN].name);
+        			}
+    			}
+    			if (i == address_book->count)
+    			{
+        			printf("Email ID not found\n");
+       
+			}
+			break;
+		case 0:
+			printf("Exiting\n");
+			return e_back;
+			break;
+		default:
+			printf("Invalid number\n");
+			break;
+	}
+	return e_success;
 }
 
 Status delete_contact(AddressBook *address_book)
