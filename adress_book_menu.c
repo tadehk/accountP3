@@ -147,12 +147,57 @@ Status add_contacts(AddressBook *address_book)
 
 Status search(const char *str, AddressBook *address_book, int loop_count, int field, const char *msg, Modes mode)
 {
-	/* Add the functionality for adding contacts here */
+	
 }
 
 Status search_contact(AddressBook *address_book)
 {
-	/* Add the functionality for search contacts here */
+	if (address_book == NULL)                   
+    {
+        printf("address_book is null\n");
+        return;
+    }
+    char name[200] = { 0 };
+    printf("Please enter the name of the contact you want to find:");           
+    scanf("%s", &name);
+    size_t i = 0;
+    for (; i < address_book->count; ++i)
+    {
+        if (strcmp(address_book->list[i].name, name) == 0)
+        {
+            printf("This person's information is:\n full name:%s ,Telephone:%s ,Address:%s\n",
+                address_book->list[i].name,
+                address_book->list[i].phone_numbers,
+                address_book->list[i].email_addresses);
+            return;
+        }
+
+		if (strcmp(address_book->list[i].phone_numbers, name) == 0)
+        {
+
+            printf("This person's information is:\n full name:%s\n ,Telephone:%s\n ,Address:%s\n",
+                address_book->list[i].name,
+                address_book->list[i].phone_numbers,
+                address_book->list[i].email_addresses);
+            return;
+        }
+		
+		if (strcmp(address_book->list[i].email_addresses, name) == 0)
+        {
+            printf("This person's information is:\n full name:%s\n ,Telephone:%s\n ,Address:%s\n",
+                address_book->list[i].name,
+                address_book->list[i].phone_numbers,
+                address_book->list[i].email_addresses);
+            return;
+        }
+    }
+    if (i == address_book->count)
+    {
+        printf("This person is not in this address book.\n");
+		printf("Please search for a different person.\n");
+        return;
+    }
+
 }
 
 Status edit_contact(AddressBook *address_book)
