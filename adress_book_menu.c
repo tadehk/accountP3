@@ -188,5 +188,13 @@ Status edit_contact(AddressBook *address_book)
 
 Status delete_contact(AddressBook *address_book)
 {
-	/* Add the functionality for delete contacts here */
+	int del = 0;
+	char name[200] = {0};
+	printf("You chose to delete a contact.\n");
+	printf("Please enter the full name of the contact would you like to delete:");
+	scanf("%s", &name);
+	strcpy(address_book->list[i].name del);
+	strcpy(address_book->list[i].phone_numbers, del);
+	strcpy( address_book->list[i].email_addresses, del);
+	printf("Contact deleted\n");
 }
