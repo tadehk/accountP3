@@ -165,8 +165,26 @@ Status search_contact(AddressBook *address_book)
     {
         if (strcmp(address_book->list[i].name, name) == 0)
         {
-            printf("eureka!\n");
             printf("This person's information is:\n full name:%s ,Telephone:%s ,Address:%s\n",
+                address_book->list[i].name,
+                address_book->list[i].phone_numbers,
+                address_book->list[i].email_addresses);
+            return;
+        }
+
+		if (strcmp(address_book->list[i].phone_numbers, name) == 0)
+        {
+
+            printf("This person's information is:\n full name:%s\n ,Telephone:%s\n ,Address:%s\n",
+                address_book->list[i].name,
+                address_book->list[i].phone_numbers,
+                address_book->list[i].email_addresses);
+            return;
+        }
+		
+		if (strcmp(address_book->list[i].email_addresses, name) == 0)
+        {
+            printf("This person's information is:\n full name:%s\n ,Telephone:%s\n ,Address:%s\n",
                 address_book->list[i].name,
                 address_book->list[i].phone_numbers,
                 address_book->list[i].email_addresses);
@@ -175,7 +193,8 @@ Status search_contact(AddressBook *address_book)
     }
     if (i == address_book->count)
     {
-        printf("No one!\n");
+        printf("This person is not in this address book.\n");
+		printf("Please search for a different person.\n");
         return;
     }
 
