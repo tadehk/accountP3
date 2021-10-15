@@ -61,7 +61,7 @@ Status list_contacts(AddressBook *address_book, const char *title, int *index, c
 	for(; i < *address_book -1; i++)
 	{
 		printf("\nPhone Book Entries (%d):", *address_book);
-		printf("\n%s\t%s\t%s", list[i].name, list[i].phone_numbers, list[i].email_addresses);
+		printf("\n%s\t%s\t%s", address_book->list->contactInfo->name[i],address_book->list->contactInfo->phone_numbers[i], address_book->list->contactInfo->email_addresses[i]);
 	}
 	
 	return e_success;
