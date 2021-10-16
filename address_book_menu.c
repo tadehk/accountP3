@@ -193,12 +193,14 @@ Status add_contacts(AddressBook *address_book)
 {
 	/* Add the functionality for adding contacts here */
 	//address_book -> count;
+	menu_header("Add Contact:\n");
 	printf("Please enter your name.");
 	scanf("%s", address_book -> list[NAME_COUNT][NAME_LEN].name);
 	printf("Please enter your phone number.");
 	scanf("%s",address_book -> list[PHONE_NUMBER_COUNT][NUMBER_LEN].phone_numbers);
 	printf("Please enter your email address.");
 	scanf("%s", address_book -> list[EMAIL_ID_COUNT][EMAIL_ID_LEN].email_addresses);
+	return e_success;
 }
 
 Status search(const char *str, AddressBook *address_book, int loop_count, int field, const char *msg, Modes mode)
@@ -208,13 +210,11 @@ Status search(const char *str, AddressBook *address_book, int loop_count, int fi
 
 Status search_contact(AddressBook *address_book)
 {
-<<<<<<< HEAD
-	/* Add the functionality for search contacts here */
-=======
+	menu_header("Search Contact:\n");
 	if (address_book == NULL)                   
     {
         printf("address_book is null\n");
-        return;
+        return e_fail;
     }
     char name[200] = { 0 };
     printf("Please enter the name of the contact you want to find:");           
@@ -228,7 +228,7 @@ Status search_contact(AddressBook *address_book)
                 address_book->list[i].name,
                 address_book->list[i].phone_numbers,
                 address_book->list[i].email_addresses);
-            return;
+            return e_success;
         }
 
 		if (strcmp(address_book->list[i].phone_numbers, name) == 0)
@@ -238,7 +238,7 @@ Status search_contact(AddressBook *address_book)
                 address_book->list[i].name,
                 address_book->list[i].phone_numbers,
                 address_book->list[i].email_addresses);
-            return;
+            return e_success;
         }
 		
 		if (strcmp(address_book->list[i].email_addresses, name) == 0)
@@ -247,28 +247,27 @@ Status search_contact(AddressBook *address_book)
                 address_book->list[i].name,
                 address_book->list[i].phone_numbers,
                 address_book->list[i].email_addresses);
-            return;
+            return e_success;
         }
     }
     if (i == address_book->count)
     {
-        printf("This person is not in this address book.\n");
+      printf("This person is not in this address book.\n");
 		printf("Please search for a different person.\n");
-        return;
+      return e_no_match;
     }
 
->>>>>>> 2d55725b8d3ce9df36b7fd2a149dfa22d87645b1
 }
 
 Status edit_contact(AddressBook *address_book)
 {
 	/* Add the functionality for edit contacts here */
-	printf("Search Contact to Edit by:/n
-		0.Back/n
-		1.Name/n
-		2.Phone No/n
-		3.Email ID/n
-		Please select an option: ");
+	menu_header("Edit Contact:\n");
+	printf("0.Back/n");
+	printf("1.Name/n");
+	printf("2.Phone No/n");
+	printf("3.Email ID/n");
+	printf("Please select an option: ");
 	int num;
 	scanf("%d", num);
 	switch(num)
@@ -289,7 +288,7 @@ Status edit_contact(AddressBook *address_book)
     			if (i == address_book->count)
     			{
         			printf("Name not found\n");
-       
+					return e_no_match;
 			}
 			break;
 		case 2:
@@ -308,7 +307,7 @@ Status edit_contact(AddressBook *address_book)
     			if (i == address_book->count)
     			{
         			printf("Phone number not found\n");
-       
+					  return e_no_match;
 			}
 			break;
 		case 3:
@@ -327,7 +326,7 @@ Status edit_contact(AddressBook *address_book)
     			if (i == address_book->count)
     			{
         			printf("Email ID not found\n");
-       
+					return e_no_match;
 			}
 			break;
 		case 0:
@@ -336,6 +335,7 @@ Status edit_contact(AddressBook *address_book)
 			break;
 		default:
 			printf("Invalid number\n");
+			return e_fail;
 			break;
 	}
 	return e_success;
@@ -343,6 +343,7 @@ Status edit_contact(AddressBook *address_book)
 
 Status delete_contact(AddressBook *address_book)
 {	
+	menu_header("Delete Contact:\n");
 	int i = 0;
 	char name[200];
 	int deleteContact = -1;
