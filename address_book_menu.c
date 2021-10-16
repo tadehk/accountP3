@@ -320,7 +320,7 @@ Status edit_contact(AddressBook *address_book)
         			if (strcmp(address_book->list[i].email_addresses, email_addresses) == 0)
         			{
             			printf("What would you like to change the email address to?: ");
-				scanf("%s", address_book -> list[i][EMAIL_ID_LEN].name);
+				scanf("%s", address_book -> list[i][EMAIL_ID_LEN].email_addresses);
         			}
     			}
     			if (i == address_book->count)
@@ -352,7 +352,17 @@ Status delete_contact(AddressBook *address_book)
 	scanf("%s", &name);
 	for(i = 0; i<*address_book; i++)
 	{
-		if((strcmp(address_book->list[i].name,)==0)
+		if((strcmp(address_book->list[i].name, name)==0)
+		{
+			deleteContact =i;
+			break;
+		}
+		if((strcmp(address_book->list[i].phone_numbers, name)==0)
+		{
+			deleteContact =i;
+			break;
+		}
+		if((strcmp(address_book->list[i].email_addresses, name)==0)
 		{
 			deleteContact =i;
 			break;
@@ -364,7 +374,7 @@ Status delete_contact(AddressBook *address_book)
 		}
 		else{
 			int i=0
-			for(i=deleteContact; i<address_book-1;i++)
+			for(i=deleteContact; i<*address_book-1;i++)
 			{
 				strcpy(address_book->list[i].name);
 				strcpy(address_book->list[i].phone_numbers);
