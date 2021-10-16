@@ -75,6 +75,7 @@ typedef struct
 	FILE *fp;
 	ContactInfo *list;
 	int count;	
+	size_t capacity;
 } AddressBook;
 
 #endif
