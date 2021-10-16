@@ -64,7 +64,7 @@ int get_option(int type, const char *msg)
 				break;
 		}
 	}
-	/* Fill the code to add above functionality */
+
 }
 
 Status save_prompt(AddressBook *address_book)
@@ -203,10 +203,6 @@ Status add_contacts(AddressBook *address_book)
 	return e_success;
 }
 
-Status search(const char *str, AddressBook *address_book, int loop_count, int field, const char *msg, Modes mode)
-{
-	/* Add the functionality for adding contacts here */
-}
 
 Status search_contact(AddressBook *address_book)
 {
@@ -261,7 +257,6 @@ Status search_contact(AddressBook *address_book)
 
 Status edit_contact(AddressBook *address_book)
 {
-	/* Add the functionality for edit contacts here */
 	menu_header("Edit Contact:\n");
 	printf("0.Back/n");
 	printf("1.Name/n");
