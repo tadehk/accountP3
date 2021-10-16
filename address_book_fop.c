@@ -11,17 +11,14 @@
 Status load_file(AddressBook *address_book)
 {
 	int ret;
-
-	/* 
-	 * Check for file existance
-	 */
-
 	if (ret == 0)
 	{
-		/* 
-		 * Do the neccessary step to open the file
-		 * Do error handling
-		 */ 
+		FILE* fp = fopen(DEFAULT_FILE, "r");
+		if (fp == NULL)
+		{
+			printf("Failed to open file!%s\n", DEFAULT_FILE);
+			return;
+		}
 	}
 	else
 	{
