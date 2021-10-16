@@ -193,6 +193,13 @@ Status add_contacts(AddressBook *address_book)
 {
 	/* Add the functionality for adding contacts here */
 	//address_book -> count;
+
+	// int i, n;
+	//struct AddressBook *newAddresses;
+	// newAdresses = (struct AdressBook*) malloc (n * sizeof(struct AddressBook));
+
+
+
 	menu_header("Add Contact:\n");
 	printf("Please enter your name.");
 	scanf("%s", address_book -> list[NAME_COUNT][NAME_LEN].name);
